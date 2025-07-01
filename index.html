@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Section A3 - Weekly Timetable</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            padding: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        h1 {
+            font-size: 2.5em;
+            margin: 0;
+            font-weight: 700;
+        }
+        
+        .subtitle {
+            color: #666;
+            font-size: 1.1em;
+            margin-top: 10px;
+        }
+        
+        .timetable {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+        }
+        
+        .timetable th {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 15px 10px;
+            text-align: center;
+            font-weight: 600;
+            font-size: 1em;
+        }
+        
+        .timetable td {
+            padding: 12px 10px;
+            text-align: center;
+            border-bottom: 1px solid #eee;
+            font-size: 0.9em;
+            transition: background-color 0.3s ease;
+        }
+        
+        .timetable tr:nth-child(even) {
+            background-color: #f8f9ff;
+        }
+        
+        .column-highlight {
+            background-color: rgba(102, 126, 234, 0.12) !important;
+            transition: background-color 0.2s ease;
+        }
+        
+        .time-slot {
+            background-color: #f0f4ff !important;
+            font-weight: 600;
+            color: #4a5568;
+        }
+        
+        .subject {
+            font-weight: 500;
+            color: #2d3748;
+        }
+        
+        .laboratory {
+            background-color: #fff5f5 !important;
+            color: #c53030;
+            font-weight: 600;
+        }
+        
+        .sports {
+            background-color: #f0fff4 !important;
+            color: #38a169;
+            font-weight: 600;
+        }
+        
+        .break-slot {
+            background-color: #fffaf0 !important;
+            color: #d69e2e;
+            font-style: italic;
+        }
+        
+        .download-btn {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 12px 30px;
+            border: none;
+            border-radius: 25px;
+            font-size: 1em;
+            font-weight: 600;
+            cursor: pointer;
+            margin: 20px auto;
+            display: block;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+        }
+        
+        .download-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.6);
+        }
+        
+        .legend {
+            margin-top: 20px;
+            padding: 15px;
+            background: #f7fafc;
+            border-radius: 8px;
+            border-left: 4px solid #667eea;
+        }
+        
+        .legend-item {
+            display: inline-block;
+            margin: 5px 15px 5px 0;
+            font-size: 0.9em;
+        }
+        
+        .legend-color {
+            display: inline-block;
+            width: 15px;
+            height: 15px;
+            border-radius: 3px;
+            margin-right: 5px;
+            vertical-align: middle;
+        }
+        
+        @media print {
+            body { background: white; }
+            .container { box-shadow: none; }
+            .download-btn { display: none; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Section A3</h1>
+            <div class="subtitle">Weekly Class Timetable</div>
+        </div>
+        
+        <table class="timetable">
+            <thead>
+                <tr>
+                    <th>Time Period</th>
+                    <th>Monday</th>
+                    <th>Tuesday</th>
+                    <th>Wednesday</th>
+                    <th>Thursday</th>
+                    <th>Friday</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="time-slot">1st Period<br>(09:30–10:20)</td>
+                    <td class="subject">Physics</td>
+                    <td class="subject">Biology</td>
+                    <td class="subject">Mathematics – Calculus</td>
+                    <td class="subject">Engineering Mechanics – Principles</td>
+                    <td class="subject">Biology</td>
+                </tr>
+                <tr>
+                    <td class="time-slot">2nd Period<br>(10:20–11:10)</td>
+                    <td class="laboratory" rowspan="3">Engineering Graphics and Design</td>
+                    <td class="subject">MATLAB</td>
+                    <td class="subject">Basic Electrical</td>
+                    <td class="subject">Physics</td>
+                    <td class="subject">Economics and Business Models</td>
+                </tr>
+                <tr>
+                    <td class="time-slot">3rd Period<br>(11:10–12:00)</td>
+                    <td class="laboratory" rowspan="2">Python Laboratory</td>
+                    <td class="subject">AI & Data Science using Python</td>
+                    <td class="subject">Essential Studies for Career Development - I</td>
+                    <td class="subject">Mathematics – Calculus</td>
+                </tr>
+                <tr>
+                    <td class="time-slot">4th Period<br>(12:00–12:50)</td>
+                    <td class="subject">Competitive Aptitude Training – I</td>
+                    <td class="subject">Mathematics – Calculus</td>
+                    <td class="subject">Physics</td>
+                </tr>
+                <tr>
+                    <td class="time-slot break-slot">Lunch Break<br>(12:50–01:40)</td>
+                    <td class="break-slot">LUNCH</td>
+                    <td class="break-slot">LUNCH</td>
+                    <td class="break-slot">LUNCH</td>
+                    <td class="break-slot">LUNCH</td>
+                    <td class="break-slot">LUNCH</td>
+                </tr>
+                <tr>
+                    <td class="time-slot">5th Period<br>(01:40–02:30)</td>
+                    <td class="subject">Mathematics – Calculus</td>
+                    <td class="subject">Physics</td>
+                    <td class="laboratory" rowspan="3">Physics Laboratory</td>
+                    <td class="sports">Sports</td>
+                    <td class="laboratory" rowspan="3">Basic Electrical Laboratory</td>
+                </tr>
+                <tr>
+                    <td class="time-slot">6th Period<br>(02:30–03:20)</td>
+                    <td class="subject">Essential Studies for Career Development - I</td>
+                    <td class="subject">Soft Skills / Foreign Language</td>
+                    <td class="subject">Design Thinking & Innovation – Ideation & Research</td>
+                </tr>
+                <tr>
+                    <td class="time-slot">7th Period<br>(03:20–04:10)</td>
+                    <td class="subject">Engineering Mechanics – Principles</td>
+                    <td class="subject">Basic Electrical</td>
+                    <td class="subject">Biology</td>
+                </tr>
+            </tbody>
+        </table>
+        
+        <div class="legend">
+            <strong>Legend:</strong>
+            <div class="legend-item">
+                <span class="legend-color" style="background-color: #fff5f5; border: 1px solid #c53030;"></span>
+                Laboratory Classes
+            </div>
+            <div class="legend-item">
+                <span class="legend-color" style="background-color: #f0fff4; border: 1px solid #38a169;"></span>
+                Sports/Physical Activity
+            </div>
+            <div class="legend-item">
+                <span class="legend-color" style="background-color: #fffaf0; border: 1px solid #d69e2e;"></span>
+                Break/Free Period
+            </div>
+        </div>
+        
+        <button class="download-btn" onclick="downloadAsWord()">📄 Download as Word Document</button>
+    </div>
+
+    <script>
+        function downloadAsWord() {
+            // Create a complete HTML document for Word
+            const wordContent = `
+                <html xmlns:o='urn:schemas-microsoft-com:office:office' xmlns:w='urn:schemas-microsoft-com:office:word' xmlns='http://www.w3.org/TR/REC-html40'>
+                <head>
+                    <meta charset="utf-8">
+                    <title>Section A3 Weekly Timetable</title>
+                    <style>
+                        body { font-family: 'Calibri', sans-serif; margin: 40px; }
+                        h1 { color: #2c5aa0; text-align: center; font-size: 24pt; margin-bottom: 10px; }
+                        .subtitle { text-align: center; font-size: 14pt; color: #666; margin-bottom: 30px; }
+                        table { width: 100%; border-collapse: collapse; margin: 20px 0; }
+                        th { background-color: #2c5aa0; color: white; padding: 12px 8px; text-align: center; font-weight: bold; border: 1px solid #ccc; }
+                        td { padding: 10px 8px; text-align: center; border: 1px solid #ccc; font-size: 10pt; }
+                        .time-slot { background-color: #f0f4ff; font-weight: bold; }
+                        .laboratory { background-color: #fff5f5; color: #c53030; font-weight: bold; }
+                        .sports { background-color: #f0fff4; color: #38a169; font-weight: bold; }
+                        .break-slot { background-color: #fffaf0; color: #d69e2e; font-style: italic; }
+                        tr:nth-child(even) { background-color: #f8f9ff; }
+                    </style>
+                </head>
+                <body>
+                    <h1>Section A3</h1>
+                    <div class="subtitle">Weekly Class Timetable</div>
+                    ${document.querySelector('.timetable').outerHTML}
+                    <div style="margin-top: 20px; font-size: 10pt;">
+                        <strong>Legend:</strong><br>
+                        🔬 Red background: Laboratory Classes<br>
+                        ⚽ Green background: Sports/Physical Activity<br>
+                        ☕ Yellow background: Break/Free Period
+                    </div>
+                </body>
+                </html>
+            `;
+            
+            const blob = new Blob([wordContent], {
+                type: 'application/msword'
+            });
+            
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'Section_A3_Weekly_Timetable.doc';
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+        }
+        
+        // Column hover effect
+        document.addEventListener('DOMContentLoaded', function() {
+            const table = document.querySelector('.timetable');
+            const cells = table.querySelectorAll('td, th');
+            
+            cells.forEach(cell => {
+                cell.addEventListener('mouseenter', function() {
+                    const columnIndex = Array.from(this.parentNode.children).indexOf(this);
+                    if (columnIndex > 0) { // Skip the first column (time slots)
+                        highlightColumn(columnIndex);
+                    }
+                });
+                
+                cell.addEventListener('mouseleave', function() {
+                    clearColumnHighlight();
+                });
+            });
+            
+            function highlightColumn(columnIndex) {
+                const rows = table.querySelectorAll('tr');
+                rows.forEach(row => {
+                    const cell = row.children[columnIndex];
+                    if (cell) {
+                        cell.classList.add('column-highlight');
+                    }
+                });
+            }
+            
+            function clearColumnHighlight() {
+                const highlightedCells = table.querySelectorAll('.column-highlight');
+                highlightedCells.forEach(cell => {
+                    cell.classList.remove('column-highlight');
+                });
+            }
+        });
+    </script>
+</body>
+</html>
